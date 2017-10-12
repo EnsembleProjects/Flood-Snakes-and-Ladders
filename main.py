@@ -1,10 +1,9 @@
-from __future__ import division
-from __future__ import absolute_import
 try:
     import pygame_sdl2
     pygame_sdl2.import_as_pygame()
 except ImportError:
     pass
+
 import pygame
 import random
 import os.path
@@ -19,17 +18,19 @@ grey = (224, 224, 224)
 
 avCols = [(255, 0, 0), (0, 255, 0), (0, 0, 255), (255,255,0)]       #colours for the player avatars
 
+
 pygame.init()
 pygame.font.init()
-txtFont = pygame.font.SysFont(u"Candara", 30)                        #fonts used throughout the game
-txtFont2 = pygame.font.SysFont(u"Candara", 15)
-cTFont = pygame.font.SysFont(u"Candara", 25)
+txtFont = pygame.font.Font("DejaVuSans.ttf", 30)                        #fonts used throughout the game
+txtFont2 = pygame.font.Font("DejaVuSans.ttf", 15)
+cTFont = pygame.font.Font("DejaVuSans.ttf", 25)
 cTFont.set_bold(True)
-cFont = pygame.font.SysFont(u"Candara", 35)
-cFont2 = pygame.font.SysFont(u"Candara", 60)
-bFont = pygame.font.SysFont(u"Candara", 100)
-quoteFont = pygame.font.SysFont(u"Candara", 50)
-avFont = pygame.font.SysFont(u"Ariel", 45)
+cFont = pygame.font.Font("DejaVuSans.ttf", 35)
+cFont2 = pygame.font.Font("DejaVuSans.ttf", 60)
+bFont = pygame.font.Font("DejaVuSans.ttf", 100)
+quoteFont = pygame.font.Font("DejaVuSans.ttf", 50)
+avFont = pygame.font.Font("DejaVuSans.ttf", 45)
+
 
 clock = pygame.time.Clock()
 
@@ -62,14 +63,14 @@ logoHei = 547*logoFctr
 
 ground = pygame.display.set_mode((windWid, windHei))            #background surface
 
-bgImg = pygame.transform.scale(pygame.image.load(u"graphics/newBG_v4.png"), (windWid, windHei))              #background image
-mmImg = pygame.transform.scale(pygame.image.load(u"graphics/newBGNoOverlay_v4.png"), (windWid, windHei))     #main menu background image
-blackImg = pygame.transform.scale(pygame.image.load(u"graphics/blackBg.png"), (windWid, windHei))    #loads and scales an image of the colour black
-cardBackImg = pygame.transform.scale(pygame.image.load(u"graphics/cardBack.jpg"), (cWid, cHei))      #loads and scales the card back image
-logo = pygame.transform.scale(pygame.image.load(u"graphics/CUIDARwave.jpg"), (logoWid, int(logoHei)))
+bgImg = pygame.transform.scale(pygame.image.load("graphics/newBG_v4.png"), (windWid, windHei))              #background image
+mmImg = pygame.transform.scale(pygame.image.load("graphics/newBGNoOverlay_v4.png"), (windWid, windHei))     #main menu background image
+blackImg = pygame.transform.scale(pygame.image.load("graphics/blackBg.png"), (windWid, windHei))    #loads and scales an image of the colour black
+cardBackImg = pygame.transform.scale(pygame.image.load("graphics/cardBack.jpg"), (cWid, cHei))      #loads and scales the card back image
+logo = pygame.transform.scale(pygame.image.load("graphics/CUIDARwave.jpg"), (logoWid, int(logoHei)))
 
 
-pygame.display.set_caption(u"Flood Snakes and Ladders")
+pygame.display.set_caption("Flood Snakes and Ladders")
 
 
 class Component(object):                   #Abstract class to cover general functionality (not important)
@@ -102,7 +103,7 @@ class Avatar(Component):             #Class for player character avatars
 class Button(Component):            #Class for buttons that appear on the main menu
     def __init__(self, id, x, y):
         super(Button, self).__init__(id, x, y)
-        self.txtSurf = txtFont.render(u"<None>", False, black)
+        self.txtSurf = txtFont.render("<None>", False, black)
         #print("button: " + str(id) + " alive")
 
     def drawSelf(self):
@@ -116,8 +117,8 @@ class Button(Component):            #Class for buttons that appear on the main m
 class Instructions(Component):
     def __init__(self, x, y):   
         super(Instructions, self).__init__(1, x, y)                           #id just set to 1 because isn't necessary
-        self.mainSurf = txtFont.render(u"", False, black)    #the first, bigger line of text
-        self.subSurf = txtFont2.render(u"", False, black)    #the second, smaller line of text
+        self.mainSurf = txtFont.render("", False, black)    #the first, bigger line of text
+        self.subSurf = txtFont2.render("", False, black)    #the second, smaller line of text
         self.show = True                                    #whether or not to show instructions
 
     def drawSelf(self):
@@ -127,7 +128,7 @@ class Instructions(Component):
             ground.blit(self.mainSurf, (self.x, self.y))
             ground.blit(self.subSurf, (self.x, self.y+40))
 
-    def changeText(self, main = None, sub = u""):
+    def changeText(self, main = None, sub = ""):
         if main != None: self.mainSurf = txtFont.render(main, False, black)
         if sub != None: self.subSurf = txtFont2.render(sub, False, black)
 
@@ -152,12 +153,12 @@ class Card(Component):            #Class for cards which determine player moveme
             pygame.draw.rect(ground, black, (lrgX, lrgY, cWid*fctr, cHei*fctr)) #border
             self.body = pygame.draw.rect(ground, grey, (lrgX+border*fctr, lrgY+border*fctr, (cWid-(border*2))*fctr, (cHei-(border*2))*fctr))
 
-            preface = u"Go forward "          #assumes roll > 0 initially
+            preface = "Go forward "          #assumes roll > 0 initially
             if roll < 0:
                 if newRandCard: cardI = random.randint(0, len(negTxts[tileCat()])-1)
                 txt = negTxts[tileCat()][cardI]
                 roll = -roll
-                preface = u"Go back "
+                preface = "Go back "
                 col = red
             elif roll > 0 and roll < minPosRoll:
                 if newRandCard: cardI = random.randint(0, len(neuTxts[tileCat()])-1)
@@ -196,11 +197,11 @@ class Card(Component):            #Class for cards which determine player moveme
 def initGraphics(path, highest = 1):  #'highest' = the highest graphics-number (e.g. if num = 30, will look up to qImg30.png)
     gs = []
     for i in xrange(highest):
-        if (os.path.isfile(path + u"Picture" + unicode(i+1) + u".png")):   #if checks if there is an image with given index number
-            gs.append(pygame.image.load((path + u"Picture" + unicode(i+1) + u".png")).convert())
+        if (os.path.isfile(path + "Picture" + unicode(i+1) + ".png")):   #if checks if there is an image with given index number
+            gs.append(pygame.image.load((path + "Picture" + unicode(i+1) + ".png")).convert())
             if (gs[i].get_width() > windWid-(picGap)): gs[i] = pygame.transform.scale(gs[i], (windWid-picGap, int(gs[i].get_height()*((windWid-picGap)/gs[i].get_width()))))
             if (gs[i].get_height() > windHei-(picGap)): gs[i] = pygame.transform.scale(gs[i], (int(gs[i].get_width()*((windHei-picGap)/gs[i].get_height())), windHei-picGap))
-    print u"length of graphics: " + unicode(len(gs))
+    print "length of graphics: " + unicode(len(gs))
     if len(gs) == 1: return gs[0]               #if there's only 1 picture, just return that
     else: return gs                              #else, return the array
 
@@ -214,8 +215,8 @@ def tileCat():
     return -1
 
 def showParagr(txt, pos, font, widLimit, color=black, alpha=None):  #method for handling and printing multi-line text to the screen
-    words = [word.split(u" ") for word in txt.splitlines()]
-    space = font.size(u" ")[0]
+    words = [word.split(" ") for word in txt.splitlines()]
+    space = font.size(" ")[0]
     x, y = pos
     maxWid = pos[0] + widLimit
     for line in words:
@@ -252,13 +253,21 @@ def initTiles():
     return ts
 
 def initTxt(path):              #loads text files into String array and returns it
-    file = open(path, u"r", errors='ignore')
-    txt = []
-    for line in file:
-        txt.append(line)
-    #print(len(txt))
-    if len(txt) == 1: return txt[0]
-    else: return txt
+
+    if os.path.isfile(path):
+        print path, " Exists!"
+    else:
+        print path, " doesnt Exist!"
+    try:
+        with open(path, "r") as file:#, encoding="utf-8", errors="ignore"
+            txt = []
+            for line in file:
+                txt.append(line)
+            #print(len(txt))
+            if len(txt) == 1: return txt[0]
+            else: return txt
+    except TypeError:
+        return ""
 
 def initCards():                #initialises cards, places evenly spaced-apart
     cs = []
@@ -291,7 +300,7 @@ def rollDie():              #method to handle metaphorical 'die roll' i.e. card 
     while dieRoll == 0 or plyrs[turn].tilePos + dieRoll > 20 or plyrs[turn].tilePos + dieRoll <= 0:   #continues dice roll until valid number given
         dieRoll = random.randint(minRoll, maxRoll)
             
-    instructs.changeText(u"Player " + unicode(turn+1) + u", please pick a card:", u"This will determine spaces moved")
+    instructs.changeText("Player " + unicode(turn+1) + ", please pick a card:", "This will determine spaces moved")
     instructs.changePos(40, 40)
     choosing = True
     revealed = False
@@ -307,12 +316,12 @@ def rollDie():              #method to handle metaphorical 'die roll' i.e. card 
                     if cards[c].body.collidepoint(pygame.mouse.get_pos()):
                         cards[c].reveal = True
                         revealed = True
-                        instructs.changeText(u"Player " + unicode(turn+1) + u", tap to continue", u"When you are ready")
+                        instructs.changeText("Player " + unicode(turn+1) + ", tap to continue", "When you are ready")
         gameLoopUpdate()
         
-    if dieRoll == 1 or dieRoll == -1: txtStr = u"Player " + unicode(turn+1) + u", move " + unicode(dieRoll) + u" space"    #for grammar
-    else: txtStr = u"Player " + unicode(turn+1) + u", move " + unicode(dieRoll) + u" spaces"
-    instructs.changeText(txtStr, u"Hold to move")
+    if dieRoll == 1 or dieRoll == -1: txtStr = "Player " + unicode(turn+1) + ", move " + unicode(dieRoll) + " space"    #for grammar
+    else: txtStr = "Player " + unicode(turn+1) + ", move " + unicode(dieRoll) + " spaces"
+    instructs.changeText(txtStr, "Hold to move")
     instructs.changePos(instructsPos()[0], instructsPos()[1])
 
 def evalPlyrMove(plyr):   #evaluates whether the player has moved their avatar to the correct location  
@@ -326,7 +335,7 @@ def evalPlyrMove(plyr):   #evaluates whether the player has moved their avatar t
     else:
         plyr.x = plyr.lastPlaced[0]
         plyr.y = plyr.lastPlaced[1]
-        instructs.changeText(sub = u"Try again!")
+        instructs.changeText(sub = "Try again!")
 
 def ammendCollisions(plyr):     #moves player avatars if 2+ are on the same tile
     global plyrs
@@ -336,7 +345,7 @@ def ammendCollisions(plyr):     #moves player avatars if 2+ are on the same tile
             if numPlyrs == 4: plyr.x += (avRad*2) - 8   #squashes avatars together more if 4 players (to fit on 1 tile)
             else: plyr.x += (avRad*2) + 5
             plyr.tilePlac += 1
-        print unicode(p.id+1) + u" tile: " + unicode(p.tilePos) + u" place: " + unicode(p.tilePlac)
+        print unicode(p.id+1) + " tile: " + unicode(p.tilePos) + " place: " + unicode(p.tilePlac)
 
 def initPlyrs(num = 1):         #initialises player avatars
     ps = []
@@ -379,11 +388,11 @@ def showQuote(tileNum):
     cat = tileCat()
     print cat
     if firstQuote:
-        slide = u"first"
+        slide = "first"
         firstQuote = False
     elif tileNum == 20: slide = endSlide
     else:
-        print u"length: " + unicode(len(quoteSlides[cat])-1)
+        print "length: " + unicode(len(quoteSlides[cat])-1)
         slide = quoteSlides[cat][random.randint(1, len(quoteSlides[cat])-1)]
     viewQuote = True
     sTime = pygame.time.get_ticks()     #takes a start time to work out how long quote has been shown for
@@ -391,13 +400,13 @@ def showQuote(tileNum):
     while (viewQuote):        
         if (alpha < 240):
             blackImg.set_alpha(alpha)
-            if (slide != u"first"): slide.set_alpha(alpha)
+            if (slide != "first"): slide.set_alpha(alpha)
             alpha = alpha+10
             
         ground.blit(bgImg,(0,0))                            #draws background and avatars in background for underlay
         for p in xrange(len(plyrs)): plyrs[p].drawSelf()
         ground.blit(blackImg,(0,0))
-        if (slide != u"first"): ground.blit(slide, ((windWid/2)-(slide.get_width()/2), (windHei/2)-(slide.get_height()/2)))
+        if (slide != "first"): ground.blit(slide, ((windWid/2)-(slide.get_width()/2), (windHei/2)-(slide.get_height()/2)))
         else: showParagr(fQTxt, (txtGap, txtGap), quoteFont, windWid-(txtGap), color=white, alpha=alpha)
         
         for event in pygame.event.get():
@@ -418,25 +427,25 @@ cards = initCards()
 instructs = Instructions(50, 50)
 plyrNumOpts = initPlyrNumOpts()
 
-catTitles = initTxt(u"txts/catTitles.txt")
+catTitles = initTxt("txts/catTitles.txt")
 negTxts = []
 for i in xrange(5):
-    negTxts.append(initTxt(u"txts/negatives/negatives" + unicode(i+1) + u".txt"))
+    negTxts.append(initTxt("txts/negatives/negatives" + unicode(i+1) + ".txt"))
 
 posTxts = []
 for i in xrange(5):
-    posTxts.append(initTxt(u"txts/positives/positives" + unicode(i+1) + u".txt"))
+    posTxts.append(initTxt("txts/positives/positives" + unicode(i+1) + ".txt"))
 
 neuTxts = []
 for i in xrange(5):
-    neuTxts.append(initTxt(u"txts/neutrals/neutrals" + unicode(i+1) + u".txt"))
+    neuTxts.append(initTxt("txts/neutrals/neutrals" + unicode(i+1) + ".txt"))
     
 quoteSlides = []
 for i in xrange(5):
-    quoteSlides.append(initGraphics(u"graphics/slides/category" + unicode(i+1) + u"/", 20))
+    quoteSlides.append(initGraphics("graphics/slides/category" + unicode(i+1) + "/", 20))
 
-fQTxt = initTxt(u"txts/firstQuote.txt")
-endSlide = initGraphics(u"graphics/slides/end/")
+fQTxt = initTxt("txts/firstQuote.txt")
+endSlide = initGraphics("graphics/slides/end/")
 
 run = True
 choosing = False
@@ -452,7 +461,7 @@ while run:           #runs code from top everytime a new game begins (after a pl
     pygame.event.clear()
     while mainMenu:
 
-        instructs.changeText(u"Welcome to Flood Snakes and Ladders!", u"Selected number of players:")
+        instructs.changeText("Welcome to Flood Snakes and Ladders!", "Selected number of players:")
         ground.blit(mmImg,(0,0))
         ground.blit(logo,((windWid-(logoWid+20)),(windHei-(logoHei+20))))
         instructs.drawSelf()
@@ -508,7 +517,7 @@ while run:           #runs code from top everytime a new game begins (after a pl
         gameLoopUpdate()
         if not avSelected: instructs.show = True
 
-    instructs.changeText(u"Player " + unicode(winner) + u" wins!", u"Congradulations") #end game
+    instructs.changeText("Player " + unicode(winner) + " wins!", "Congradulations") #end game
     instructs.changePos(40, 40)
     while pygame.time.get_ticks() - endScreenStart < 3000:
         gameLoopUpdate()
