@@ -21,19 +21,19 @@
 		"Dad is upset, his old family photos are ruined.",
 		"Your family realises you have no insurance.",
 		"Bad luck, you live in a ground floor flat and must leave now!",
-		"The lights have gone out - power failure!"
+		"The lights have gone out power failure!"
 	],
 	
 	"negatives3": [
-		"In the end you had to leave your house - it was damp and smelly.",
-		"You, your brother and sister, all have to squash into one hotel room - no space!",
+		"In the end you had to leave your house it was damp and smelly.",
+		"You, your brother and sister, all have to squash into one hotel room no space!",
 		"You move to a rented house in a different place and you start to lose touch with your friends.",
 		"You've moved once already and now your landlord says you have to move AGAIN!"
 	],
 	
 	"negatives4": [
 		"It won't happen again, so there's no need to bother with a flood plan.",
-		"It was a ‘once in a lifetime', so there's no need for an emergency bag anymore.",
+		"It was a 'once in a lifetime', so there's no need for an emergency bag anymore.",
 		"You've started to worry every time it rains heavily.",
 		"You're worried about it flooding again but you don't know who to talk to."
 	],
@@ -41,7 +41,7 @@
 	"negatives5": [
 		"Oh no, you kept putting off making your flood plan and then clean forgot!",
 		"You never bothered to learn what the flood warnings mean and now look where this has got you!",
-		"Rubbish - a special assembly to talk about flooding got cancelled because the teacher that was interested left the school.",
+		"Rubbish a special assembly to talk about flooding got cancelled because the teacher that was interested left the school.",
 		"Your head teacher decides the school can't afford to provide training for your teachers about how children are affected by flooding.",
 		"Oh no, nobody told you or your friends the support group was meeting so you missed it!",
 		"Oh dear, your insurance company put everything back where it was because that was the cheapest choice!",
@@ -49,7 +49,7 @@
 	],
 
 	"neutrals1": [
-		"You heard the weather forecast - rubbish!",
+		"You heard the weather forecast rubbish!",
 		"It's always raining anyway, no big deal?",
 		"Football's cancelled, dull day ahead.",
 		"Texting your mates about the rising water."
@@ -64,10 +64,10 @@
 	],
 	
 	"neutrals3": [
-		"You go to stay with relatives and have to ‘double up' with your cousin.",
+		"You go to stay with relatives and have to 'double up' with your cousin.",
 		"Your old street is full of skips, houses being stripped out.",
 		"Builders are making slow progress on your home repairs.",
-		"The ‘drying certificate' arrives, does this mean we might go home soon?"
+		"The 'drying certificate' arrives, does this mean we might go home soon?"
 	],
 	
 	"neutrals4": [
@@ -80,8 +80,8 @@
 		"Congratulations, you signed up for the EA flood warnings.",
 		"At school you and your friends built a model of a river in a box!",
 		"Great, your teachers received training about flooding and what it's like for families to go through the hard work of recovery.",
-		"Good news - your school makes a plan which includes finding out which children have been flooded so they can join support groups.",
-		"Break through - your insurance company visits and gives you and your sister a flood pack they've made for children.",
+		"Good news your school makes a plan which includes finding out which children have been flooded so they can join support groups.",
+		"Break through your insurance company visits and gives you and your sister a flood pack they've made for children.",
 		"Great, you've persuaded your aunt to join the local Flood Action Group which is looking at building plans in your area."
 	],
 
@@ -105,7 +105,7 @@
 		"You live with your grandparents, it's meant you feel closer to them.",
 		"You find out your home is going to be restored; you'll get a new bedroom!",
 		"You went back to your street today, looks like it's coming back to life.",
-		"Your insurance company visits and offers you two rented homes - one is nearby and handy for school!"
+		"Your insurance company visits and offers you two rented homes one is nearby and handy for school!"
 	],
 	
 	"positives4": [
@@ -120,8 +120,8 @@
 		"Congratulations, you signed up for the EA flood warnings.",
 		"At school you and your friends built a model of a river in a box!",
 		"Great, your teachers received training about flooding and what it's like for families to go through the hard work of recovery.",
-		"Good news - your school makes a plan which includes finding out which children have been flooded so they can join support groups.",
-		"Break through - your insurance company visits and gives you and your sister a flood pack they've made for children.",
+		"Good news your school makes a plan which includes finding out which children have been flooded so they can join support groups.",
+		"Break through your insurance company visits and gives you and your sister a flood pack they've made for children.",
 		"Great, you've persuaded your aunt to join the local Flood Action Group which is looking at building plans in your area."  
 	]
 	
