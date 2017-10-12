@@ -42,10 +42,9 @@ txtJson="{\"firstQuote\":\"Everything you see here has come from research materi
 #ground = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
 #windWid, windHei = pygame.display.get_surface().get_size()
 
-#https://www.overstock.com/Electronics/PyleHome-Astro-PTBL9C-8-GB-Tablet-9-ARM-Cortex-A8-1.20-GHz-Bla/8176063/product.html
-#from here ^ the resoltuion of the tablet that is running the game..
+#this is size fo the tablet minus a little on y axis for menu bar.
 windWid = 1024
-windHei = 768
+windHei = 730
 avRad = 25                  #radius of a player avatar
 numTiles = 20
 tilesHori = 4               #number of tiles in length
